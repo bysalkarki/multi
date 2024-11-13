@@ -14,6 +14,6 @@ use Modules\Resturant\Http\Controllers\ResturantController;
 |
 */
 
-Route::group([], function () {
-    Route::resource('resturant', ResturantController::class)->names('resturant');
+Route::name('hospital.')->group([], function () {
+    Route::get('resturant', [ResturantController::class, 'index'])->name('index');
 });

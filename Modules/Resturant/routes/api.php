@@ -14,6 +14,3 @@ use Modules\Resturant\Http\Controllers\ResturantController;
  *
 */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->group(function () {
-    Route::apiResource('resturant', ResturantController::class)->names('resturant');
-});
