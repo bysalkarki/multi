@@ -10,8 +10,14 @@
     <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
-    <link href="./admin/assets/admin-DV50dsx0.css" rel="stylesheet">
-   
+    <link href="admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="admin/vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="admin/vendors/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -319,7 +325,17 @@
         <!-- /footer content -->
       </div>
     </div>
+
+    <!-- jQuery -->
+    <script src="admin/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+   <script src="admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="admin/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="admin/vendors/nprogress/nprogress.js"></script>
+    
     <!-- Custom Theme Scripts -->
-    <script src="./admin/assets/admin-Cn2Uf-L8.js"></script>
+    <script src="admin/vendors/js/custom.min.js"></script>
   </body>
 </html>
