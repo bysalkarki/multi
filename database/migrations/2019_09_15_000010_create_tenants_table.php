@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Customer;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,10 +18,9 @@ class CreateTenantsTable extends Migration
     {
         Schema::create('tenants', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->boolean('status')->default('true');
-
+            $table->boolean('status')->default(true);
+            $table->foreignIdFor(Customer::class)->cascadeOnDelete();
             // your custom columns may go here
-
             $table->timestamps();
             $table->json('data')->nullable();
         });
