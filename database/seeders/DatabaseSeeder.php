@@ -39,13 +39,5 @@ class DatabaseSeeder extends Seeder
             'domain' => 'acme.localhost',
         ]);
 
-        tenancy()->initialize($tenant);
-
-        $user = User::create([
-            'global_id' => $customer->global_id,
-            'name' => $customer->name,
-            'email' =>  $customer->email,
-            'password' => 'password',
-        ]);
     }
 }

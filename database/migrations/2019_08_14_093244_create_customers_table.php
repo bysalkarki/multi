@@ -23,9 +23,6 @@ return new class extends Migration
             $table->longText('alt_phone')->nullable();
             $table->string('password');
             $table->timestamps();
-
-            $table->string('global_id');
-            $table->index('global_id');
         });
     }
 
