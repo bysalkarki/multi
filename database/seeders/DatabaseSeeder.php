@@ -3,11 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Customer;
-use App\Models\Tenant;
-use App\Models\TenantUser;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Ramsey\Uuid\Uuid;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,21 +21,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'owner@gmail.com',
         ]);
 
-        $customer = Customer::create(
+        Customer::create(
             [
                 'name' => 'tenant',
                 'email' => 'tenant@gmail.com',
-                'password' => 'password'
+                'password' => 'password',
+                'domain' => 'tenant' . config('app.domain'),
+                'global_id' => Uuid::uuid4(),
             ]
         );
-
-        $tenant = Tenant::create([
-            'customer_id' => $customer->id,
-        ]);
-
-        $tenant->domains()->create([
-            'domain' => 'acme.localhost',
-        ]);
-
     }
 }

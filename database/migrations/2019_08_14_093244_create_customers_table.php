@@ -18,11 +18,15 @@ return new class extends Migration
             $table->longText('address')->nullable();
             $table->longText('name');
             $table->string('email');
+            $table->string('domain');
+            $table->string('global_id');
             $table->integer('business_type')->default(1)->nullable();
             $table->longText('phone')->nullable();
             $table->longText('alt_phone')->nullable();
             $table->string('password');
             $table->timestamps();
+
+            $table->index('global_id');
         });
     }
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->bigInteger('tenant_id')->nullable();
             $table->rememberToken();
+            $table->string('global_id');
             $table->timestamps();
         });
 
