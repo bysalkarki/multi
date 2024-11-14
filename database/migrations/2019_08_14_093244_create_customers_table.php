@@ -17,10 +17,15 @@ return new class extends Migration
             $table->longText('flag')->nullable();
             $table->longText('address')->nullable();
             $table->longText('name');
+            $table->string('email');
             $table->integer('business_type')->default(1)->nullable();
             $table->longText('phone')->nullable();
             $table->longText('alt_phone')->nullable();
+            $table->string('password');
             $table->timestamps();
+
+            $table->string('global_id');
+            $table->index('global_id');
         });
     }
 

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Customer;
 use App\Models\Tenant;
+use App\Models\TenantUser;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -24,12 +25,14 @@ class DatabaseSeeder extends Seeder
 
         $customer = Customer::create(
             [
-                'name' => 'tenant'
+                'name' => 'tenant',
+                'email' => 'tenant@gmail.com',
+                'password' => 'password'
             ]
         );
 
         $tenant = Tenant::create([
-            'customer_id' => $customer->id
+            'customer_id' => $customer->id,
         ]);
 
         $tenant->domains()->create([
