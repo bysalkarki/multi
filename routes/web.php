@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'admin.index');
+Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
+Route::view('dashboard', 'admin.index')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
