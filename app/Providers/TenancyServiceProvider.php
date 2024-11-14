@@ -12,6 +12,7 @@ use Stancl\Tenancy\Events;
 use Stancl\Tenancy\Jobs;
 use Stancl\Tenancy\Listeners;
 use Stancl\Tenancy\Middleware;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class TenancyServiceProvider extends ServiceProvider
 {
@@ -92,21 +93,23 @@ class TenancyServiceProvider extends ServiceProvider
         ];
     }
 
-    public function register()
-    {
-        //
-    }
+    public function register() {}
 
     public function boot()
     {
         $this->bootEvents();
         $this->mapRoutes();
 
+        \Stancl\Tenancy\Middleware\InitializeTenancyByDomain::$onFail = function ($exception, $request, $next) {
+            throw new NotFoundHttpException();
+        };
+
         $this->makeTenancyMiddlewareHighestPriority();
     }
 
     protected function bootEvents()
     {
+
         foreach ($this->events() as $event => $listeners) {
             foreach ($listeners as $listener) {
                 if ($listener instanceof JobPipeline) {
@@ -133,12 +136,8 @@ class TenancyServiceProvider extends ServiceProvider
         $tenancyMiddleware = [
             // Even higher priority than the initialization middleware
             Middleware\PreventAccessFromCentralDomains::class,
-
             Middleware\InitializeTenancyByDomain::class,
-            Middleware\InitializeTenancyBySubdomain::class,
-            Middleware\InitializeTenancyByDomainOrSubdomain::class,
-            Middleware\InitializeTenancyByPath::class,
-            Middleware\InitializeTenancyByRequestData::class,
+
         ];
 
         foreach (array_reverse($tenancyMiddleware) as $middleware) {
