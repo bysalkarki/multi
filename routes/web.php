@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'admin.layouts.index');
+Route::view('/', 'admin.index');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
